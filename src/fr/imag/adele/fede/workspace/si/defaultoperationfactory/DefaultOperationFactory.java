@@ -597,7 +597,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 		item.setName(param.getShortName());
 
 		String uniqueName = null;
-		if (!it.hasUniqueNameAttribute()) {
+		if (!it.hasQualifiedNameAttribute()) {
 			uniqueName = Item.NO_VALUE_STRING;
 		} else {
 			uniqueName = CadseCore.getName(item, param.getShortName(), parent, parent_lt);
