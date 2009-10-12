@@ -44,7 +44,7 @@ import fede.workspace.tool.view.oper.WSCheckItemInViewer;
 import fede.workspace.tool.view.oper.WSODeleteItemAndContent;
 import fr.imag.adele.cadse.core.CadseDomain;
 import fr.imag.adele.cadse.core.CadseException;
-import fr.imag.adele.cadse.core.CadseRootCST;
+import fr.imag.adele.cadse.core.CadseGCST;
 import fr.imag.adele.cadse.core.CompactUUID;
 import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.core.ItemDescription;
@@ -583,7 +583,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 				addAttribute(factory, param, k, v);
 			}
 		}
-		addAttribute(factory, param, CadseRootCST.ITEM_TYPE_at_QUALIFIED_NAME, item.getQualifiedName());
+		addAttribute(factory, param, CadseGCST.ITEM_at_QUALIFIED_NAME, item.getQualifiedName());
 		if (item.getLinks() != null) {
 			for (LinkDescription l : item.getLinks()) {
 				addLink(factory, param, l);
@@ -607,7 +607,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 		List<CValuesType> attributes = param.getAttributesValue();
 		for (CValuesType vt : attributes) {
 			String k = vt.getKey();
-			if (k.equals(CadseRootCST.ITEM_TYPE_at_QUALIFIED_NAME)) {
+			if (k.equals(CadseGCST.ITEM_at_QUALIFIED_NAME)) {
 				continue;
 			}
 
