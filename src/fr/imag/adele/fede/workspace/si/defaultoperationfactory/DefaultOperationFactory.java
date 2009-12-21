@@ -45,7 +45,7 @@ import fede.workspace.tool.view.oper.WSODeleteItemAndContent;
 import fr.imag.adele.cadse.core.CadseDomain;
 import fr.imag.adele.cadse.core.CadseException;
 import fr.imag.adele.cadse.core.CadseGCST;
-import fr.imag.adele.cadse.core.CompactUUID;
+import java.util.UUID;
 import fr.imag.adele.cadse.core.Item;
 import fr.imag.adele.cadse.core.ItemDescription;
 import fr.imag.adele.cadse.core.ItemType;
@@ -298,7 +298,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 		if (param == null) {
 			return null;// TODO Auto-generated method stub
 		}
-		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(new CompactUUID(param.getTypeRef()));
+		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(new UUID(param.getTypeRef()));
 		if (it == null) {
 			throw new TestException("cannot_found_item_type_from_parameter_in_operation",
 					Messages.cannot_found_item_type_from_parameter_in_operation, null, param.getTypeRef());
@@ -351,7 +351,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 		if (param == null) {
 			return null;// TODO Auto-generated method stub
 		}
-		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(new CompactUUID(param.getTypeRef()));
+		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(new UUID(param.getTypeRef()));
 		if (it == null) {
 			throw new TestException("cannot_found_item_type_from_parameter_in_operation",
 					Messages.cannot_found_item_type_from_parameter_in_operation, null, param.getTypeRef());
@@ -638,7 +638,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 
 	private void addLink(ObjectFactory factory, COperationParamItemDescription param, LinkDescription l)
 			throws CadseException {
-		CompactUUID destId = l.getDestination().getId();
+		UUID destId = l.getDestination().getId();
 		Item dest = workspaceCU.getLogicalWorkspace().getItem(destId);
 		CLinkDescription ld = factory.createCLinkDescription();
 		// ld.setKey(dest.getHandleIdentifier());
@@ -750,7 +750,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 	private Link getLinkRefParam(COperation ret, String name) throws TestException {
 		COperationParamLinkRef param = getParam(ret, name, COperationParamLinkRef.class);
 
-		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(new CompactUUID(param.getTypeRef()));
+		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(new UUID(param.getTypeRef()));
 		if (it == null) {
 			throw new TestException("Cannot found type " + param.getTypeRef());
 		}
