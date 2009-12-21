@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ipojo>
+	<component immediate="false" classname="fr.imag.adele.fede.workspace.si.defaultoperationfactory.DefaultOperationFactory" factory="fr.imag.adele.fede.workspace.si.defaultoperationfactory.DefaultOperationFactory" architecture="true">
+		<provides specification="fr.imag.adele.fede.workspace.as.operationfactory.IOperationFactory"/>
+		<requires field="workspaceCU" optional="true" filter="(sam.domain.root=Workspace)"/>
+	</component>
+	<instance component="fr.imag.adele.fede.workspace.si.defaultoperationfactory.DefaultOperationFactory" name="fr.imag.adele.cadse.si.workspace.defaultoperationfactory.instance"/>
+</ipojo>

@@ -1,0 +1,130 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-SymbolicName: fr.imag.adele.cadse.si.workspace.defaultoperationfactory;singleton:=true
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Version: 2.2.1.qualifier
+Bundle-Localization: plugin
+Bundle-ClassPath: .
+Bundle-Description: %Bundle-Description
+Export-Package: fr.imag.adele.fede.workspace.si.defaultoperationfactory;version="2.2.1"
+Import-Package: fede.workspace.tool.loadmodel.model.jaxb;version="1.0.0",
+ fede.workspace.tool.view.oper;version="2.2.1",
+ fr.imag.adele.cadse.core;version="2.2.1",
+ fr.imag.adele.cadse.core.delta;version="2.2.1",
+ fr.imag.adele.cadse.core.impl;version="2.2.1",
+ fr.imag.adele.cadse.core.oper;version="2.2.1",
+ fr.imag.adele.cadse.core.oper.annotation;version="2.2.1",
+ fr.imag.adele.cadse.core.transaction;version="2.2.1",
+ fr.imag.adele.fede.workspace.as.operationfactory,
+ fr.imag.adele.fede.workspace.as.test;version="1.0.0",
+ org.apache.felix.ipojo;version="1.2.0",
+ org.apache.felix.ipojo.architecture;version="1.2.0",
+ org.eclipse.osgi.framework.adaptor,
+ org.eclipse.osgi.util;version="1.1.0",
+ org.osgi.service.cm;version="1.2",
+ org.osgi.service.log;version="1.3"
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Created-By: envsam & iPOJO
+iPOJO-Components: component { $immediate="false" $classname="fr.imag.ad
+ ele.fede.workspace.si.defaultoperationfactory.DefaultOperationFactory"
+  $factory="fr.imag.adele.fede.workspace.si.defaultoperationfactory.Def
+ aultOperationFactory" $architecture="true" provides { $specification="
+ fr.imag.adele.fede.workspace.as.operationfactory.IOperationFactory" }m
+ anipulation { field { $name="workspaceCU" $type="fr.imag.adele.cadse.c
+ ore.CadseDomain" }method { $name="$init" }method { $arguments="{fede.w
+ orkspace.tool.loadmodel.model.jaxb.COperationEx,java.lang.Throwable}" 
+ $name="equals" $return="boolean" }method { $name="getName" $return="ja
+ va.lang.String" }method { $arguments="{fr.imag.adele.cadse.core.oper.W
+ SOperation}" $name="manage" $return="boolean" }method { $arguments="{j
+ ava.lang.Throwable}" $name="manage" $return="boolean" }method { $argum
+ ents="{fede.workspace.tool.loadmodel.model.jaxb.COperation}" $name="re
+ ad" $return="fr.imag.adele.cadse.core.oper.WSOperation" }method { $arg
+ uments="{java.lang.String,fede.workspace.tool.loadmodel.model.jaxb.COp
+ eration}" $name="getLinkTypeRef" $return="fr.imag.adele.cadse.core.Lin
+ kType" }method { $arguments="{fede.workspace.tool.loadmodel.model.jaxb
+ .COperationParamLinktypeRef}" $name="getLinkTypeRef" $return="fr.imag.
+ adele.cadse.core.LinkType" }method { $arguments="{java.lang.String,fed
+ e.workspace.tool.loadmodel.model.jaxb.COperation}" $name="getItemRefFr
+ omParam" $return="fr.imag.adele.cadse.core.Item" }method { $arguments=
+ "{fede.workspace.tool.loadmodel.model.jaxb.COperationParamItemRef}" $n
+ ame="getItemRef" $return="fr.imag.adele.cadse.core.Item" }method { $ar
+ guments="{java.lang.String,fede.workspace.tool.loadmodel.model.jaxb.CO
+ peration}" $name="getStringParam" $return="java.lang.String" }method {
+  $arguments="{java.lang.String,fede.workspace.tool.loadmodel.model.jax
+ b.COperation}" $name="getBooleanParam" $return="boolean" }method { $ar
+ guments="{java.lang.String,fede.workspace.tool.loadmodel.model.jaxb.CO
+ peration}" $name="getItemTypeRefFromParam" $return="fr.imag.adele.cads
+ e.core.ItemType" }method { $arguments="{fede.workspace.tool.loadmodel.
+ model.jaxb.COperationParamItemtypeRef}" $name="getItemTypeRef" $return
+ ="fr.imag.adele.cadse.core.ItemType" }method { $arguments="{fr.imag.ad
+ ele.cadse.core.transaction.LogicalWorkspaceTransaction,java.lang.Strin
+ g,fede.workspace.tool.loadmodel.model.jaxb.COperation}" $name="getItem
+ DescParam" $return="fr.imag.adele.cadse.core.Item" }method { $argument
+ s="{fede.workspace.tool.loadmodel.model.jaxb.COperation,java.lang.Stri
+ ng,java.lang.Class}" $name="getParam" $return="fede.workspace.tool.loa
+ dmodel.model.jaxb.COperationParam" }method { $arguments="{fr.imag.adel
+ e.cadse.core.oper.WSOperation,fede.workspace.tool.loadmodel.model.jaxb
+ .ObjectFactory}" $name="write" $return="fede.workspace.tool.loadmodel.
+ model.jaxb.COperation" }method { $arguments="{fede.workspace.tool.load
+ model.model.jaxb.ObjectFactory,fede.workspace.tool.loadmodel.model.jax
+ b.COperation,java.lang.String,fr.imag.adele.cadse.core.ItemDescription
+ }" $name="createItemParam" }method { $arguments="{fede.workspace.tool.
+ loadmodel.model.jaxb.COperationParamItemDescription,fede.workspace.too
+ l.loadmodel.model.jaxb.COperation,fr.imag.adele.cadse.core.Item,fr.ima
+ g.adele.cadse.core.ItemType,fr.imag.adele.cadse.core.Item,fr.imag.adel
+ e.cadse.core.LinkType}" $name="loadItemParam" $return="boolean" }metho
+ d { $arguments="{fede.workspace.tool.loadmodel.model.jaxb.ObjectFactor
+ y,fede.workspace.tool.loadmodel.model.jaxb.COperationParamItemDescript
+ ion,fr.imag.adele.cadse.core.LinkDescription}" $name="addLink" }method
+  { $arguments="{fede.workspace.tool.loadmodel.model.jaxb.ObjectFactory
+ ,fede.workspace.tool.loadmodel.model.jaxb.COperation,java.lang.String,
+ java.lang.String,java.lang.Object}" $name="createAttributeValue" }meth
+ od { $arguments="{java.lang.String,fede.workspace.tool.loadmodel.model
+ .jaxb.COperation}" $name="getAttributeValue" $return="fede.workspace.t
+ ool.loadmodel.model.jaxb.CValuesType" }method { $arguments="{fede.work
+ space.tool.loadmodel.model.jaxb.ObjectFactory,fede.workspace.tool.load
+ model.model.jaxb.COperationParamItemDescription,java.lang.String,java.
+ lang.Object}" $name="addAttribute" }method { $arguments="{fede.workspa
+ ce.tool.loadmodel.model.jaxb.ObjectFactory,java.lang.Object,fede.works
+ pace.tool.loadmodel.model.jaxb.CValuesType}" $name="setAttributValue" 
+ $return="boolean" }method { $arguments="{fede.workspace.tool.loadmodel
+ .model.jaxb.ObjectFactory,fede.workspace.tool.loadmodel.model.jaxb.COp
+ eration,java.lang.String,fr.imag.adele.cadse.core.Link}" $name="create
+ LinkRefParam" }method { $arguments="{fede.workspace.tool.loadmodel.mod
+ el.jaxb.COperation,java.lang.String}" $name="getLinkRefParam" $return=
+ "fr.imag.adele.cadse.core.Link" }method { $arguments="{fede.workspace.
+ tool.loadmodel.model.jaxb.ObjectFactory,fede.workspace.tool.loadmodel.
+ model.jaxb.COperation,java.lang.String,fr.imag.adele.cadse.core.ItemTy
+ pe}" $name="createItemTypeRefParam" }method { $arguments="{fede.worksp
+ ace.tool.loadmodel.model.jaxb.ObjectFactory,fede.workspace.tool.loadmo
+ del.model.jaxb.COperation,java.lang.String,fr.imag.adele.cadse.core.Li
+ nkType}" $name="createLinkTypeRefParam" }method { $arguments="{fede.wo
+ rkspace.tool.loadmodel.model.jaxb.ObjectFactory,java.lang.String,fr.im
+ ag.adele.cadse.core.LinkType}" $name="createLinkTypeRef" $return="fede
+ .workspace.tool.loadmodel.model.jaxb.COperationParamLinktypeRef" }meth
+ od { $arguments="{fede.workspace.tool.loadmodel.model.jaxb.ObjectFacto
+ ry,java.lang.String,fr.imag.adele.cadse.core.Item}" $name="createItemR
+ ef" $return="fede.workspace.tool.loadmodel.model.jaxb.COperationParamI
+ temRef" }method { $arguments="{fede.workspace.tool.loadmodel.model.jax
+ b.ObjectFactory,fede.workspace.tool.loadmodel.model.jaxb.COperation,ja
+ va.lang.String,fr.imag.adele.cadse.core.Item}" $name="createItemRefPar
+ am" }method { $arguments="{fede.workspace.tool.loadmodel.model.jaxb.Ob
+ jectFactory,fede.workspace.tool.loadmodel.model.jaxb.COperation,java.l
+ ang.String,java.lang.String}" $name="createStringParam" }method { $arg
+ uments="{fede.workspace.tool.loadmodel.model.jaxb.ObjectFactory,fede.w
+ orkspace.tool.loadmodel.model.jaxb.COperation,java.lang.String,boolean
+ }" $name="createBooleanParam" }method { $arguments="{java.lang.Throwab
+ le,fede.workspace.tool.loadmodel.model.jaxb.ObjectFactory}" $name="wri
+ te" $return="fede.workspace.tool.loadmodel.model.jaxb.COperationEx" }m
+ ethod { $arguments="{fede.workspace.tool.loadmodel.model.jaxb.CValuesT
+ ype}" $name="createValue" $return="java.lang.Object" }method { $name="
+ $SWITCH_TABLE$fede$workspace$tool$loadmodel$model$jaxb$ValueTypeType" 
+ $return="int[]" }interface { $name="fr.imag.adele.fede.workspace.as.op
+ erationfactory.IOperationFactory" }}requires { $field="workspaceCU" $o
+ ptional="true" $filter="(sam.domain.root=Workspace)" }}instance { $com
+ ponent="fr.imag.adele.fede.workspace.si.defaultoperationfactory.Defaul
+ tOperationFactory" $name="fr.imag.adele.cadse.si.workspace.defaultoper
+ ationfactory.instance" }
+ipojo-auto-start: true
+
