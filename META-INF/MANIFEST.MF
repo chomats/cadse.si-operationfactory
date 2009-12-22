@@ -280,12 +280,13 @@ iPOJO-Components: component { $immediate="false" $classname="fr.imag.ad
  e}" $name="createValue" $return="java.lang.Object" }method { $argument
  s="{fede.workspace.tool.loadmodel.model.jaxb.CValuesType}" $name="__cr
  eateValue" $return="java.lang.Object" }method { $name="$SWITCH_TABLE$f
- ede$workspace$tool$loadmodel$model$jaxb$ValueTypeType" $return="int[]"
-  }interface { $name="fr.imag.adele.fede.workspace.as.operationfactory.
- IOperationFactory" }}requires { $field="workspaceCU" $optional="true" 
- $filter="(sam.domain.root=Workspace)" }}instance { $component="fr.imag
- .adele.fede.workspace.si.defaultoperationfactory.DefaultOperationFacto
- ry" $name="fr.imag.adele.cadse.si.workspace.defaultoperationfactory.in
- stance" }
+ r$imag$adele$cadse$core$oper$annotation$ParameterKind" $return="int[]"
+  }method { $name="$SWITCH_TABLE$fede$workspace$tool$loadmodel$model$ja
+ xb$ValueTypeType" $return="int[]" }interface { $name="fr.imag.adele.fe
+ de.workspace.as.operationfactory.IOperationFactory" }}requires { $fiel
+ d="workspaceCU" $optional="true" $filter="(sam.domain.root=Workspace)"
+  }}instance { $component="fr.imag.adele.fede.workspace.si.defaultopera
+ tionfactory.DefaultOperationFactory" $name="fr.imag.adele.cadse.si.wor
+ kspace.defaultoperationfactory.instance" }
 ipojo-auto-start: true
 
