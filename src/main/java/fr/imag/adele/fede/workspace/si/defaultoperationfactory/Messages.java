@@ -18,7 +18,8 @@
  */
 package fr.imag.adele.fede.workspace.si.defaultoperationfactory;
 
-import org.eclipse.osgi.util.NLS;
+import fr.imag.adele.cadse.util.NLS;
+
 
 public class Messages extends NLS {
 	private static final String BUNDLE_NAME = "fr.imag.adele.fede.workspace.si.defaultoperationfactory.messages"; //$NON-NLS-1$
