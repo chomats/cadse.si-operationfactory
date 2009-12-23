@@ -25,23 +25,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import fede.workspace.tool.loadmodel.model.jaxb.CLinkDescription;
-import fede.workspace.tool.loadmodel.model.jaxb.COperation;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationEx;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationParam;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationParamBoolean;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationParamItemDescription;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationParamItemRef;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationParamItemtypeRef;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationParamLinkRef;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationParamLinktypeRef;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationParamOther;
-import fede.workspace.tool.loadmodel.model.jaxb.COperationParamString;
-import fede.workspace.tool.loadmodel.model.jaxb.CValuesType;
-import fede.workspace.tool.loadmodel.model.jaxb.ObjectFactory;
-import fede.workspace.tool.loadmodel.model.jaxb.ValueTypeType;
-import fede.workspace.tool.view.oper.WSCheckItemInViewer;
-import fede.workspace.tool.view.oper.WSODeleteItemAndContent;
 import fr.imag.adele.cadse.core.CadseDomain;
 import fr.imag.adele.cadse.core.CadseException;
 import fr.imag.adele.cadse.core.CadseGCST;
@@ -53,6 +36,7 @@ import fr.imag.adele.cadse.core.Link;
 import fr.imag.adele.cadse.core.LinkDescription;
 import fr.imag.adele.cadse.core.LinkType;
 import fr.imag.adele.cadse.core.LogicalWorkspace;
+import fr.imag.adele.cadse.core.attribute.IAttributeType;
 import fr.imag.adele.cadse.core.impl.CadseCore;
 import fr.imag.adele.cadse.core.oper.WSCheckAttribute;
 import fr.imag.adele.cadse.core.oper.WSCheckContent;
@@ -68,6 +52,7 @@ import fr.imag.adele.cadse.core.oper.annotation.OperParameter;
 import fr.imag.adele.cadse.core.oper.annotation.OperTest;
 import fr.imag.adele.cadse.core.oper.annotation.ParameterKind;
 import fr.imag.adele.cadse.core.transaction.LogicalWorkspaceTransaction;
+import fr.imag.adele.fede.workspace.as.initmodel.jaxb.*;
 import fr.imag.adele.fede.workspace.as.operationfactory.IOperationFactory;
 import fr.imag.adele.fede.workspace.as.test.TestException;
 
@@ -298,7 +283,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 		if (param == null) {
 			return null;// TODO Auto-generated method stub
 		}
-		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(new UUID(param.getTypeRef()));
+		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(UUID.fromString(param.getTypeRef()));
 		if (it == null) {
 			throw new TestException("cannot_found_item_type_from_parameter_in_operation",
 					Messages.cannot_found_item_type_from_parameter_in_operation, null, param.getTypeRef());
@@ -351,7 +336,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 		if (param == null) {
 			return null;// TODO Auto-generated method stub
 		}
-		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(new UUID(param.getTypeRef()));
+		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(UUID.fromString(param.getTypeRef()));
 		if (it == null) {
 			throw new TestException("cannot_found_item_type_from_parameter_in_operation",
 					Messages.cannot_found_item_type_from_parameter_in_operation, null, param.getTypeRef());
@@ -573,9 +558,9 @@ public class DefaultOperationFactory implements IOperationFactory {
 			param.setParentLinkType(createLinkTypeRef(factory, name, itemInWl.getPartParentLinkType()));
 		}
 
-		Map<String, Object> attributes = item.getAttributes();
+		Map<IAttributeType<?>, Object> attributes = item.getAttributes();
 		if (attributes != null) {
-			for (String k : attributes.keySet()) {
+			for (IAttributeType<?> k : attributes.keySet()) {
 				Object v = attributes.get(k);
 				if (v == null) {
 					continue;
@@ -583,7 +568,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 				addAttribute(factory, param, k, v);
 			}
 		}
-		addAttribute(factory, param, CadseGCST.ITEM_at_QUALIFIED_NAME, item.getQualifiedName());
+		addAttribute(factory, param, CadseGCST.ITEM_at_QUALIFIED_NAME_, item.getQualifiedName());
 		if (item.getLinks() != null) {
 			for (LinkDescription l : item.getLinks()) {
 				addLink(factory, param, l);
@@ -606,8 +591,9 @@ public class DefaultOperationFactory implements IOperationFactory {
 
 		List<CValuesType> attributes = param.getAttributesValue();
 		for (CValuesType vt : attributes) {
-			String k = vt.getKey();
-			if (k.equals(CadseGCST.ITEM_at_QUALIFIED_NAME)) {
+			UUID k = UUID.fromString(vt.getKey());
+			IAttributeType<?> attrType = (IAttributeType<?>) it.getLogicalWorkspace().getItem(k);
+			if (attrType.equals(CadseGCST.ITEM_at_QUALIFIED_NAME_)) {
 				continue;
 			}
 
@@ -617,7 +603,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 				continue;
 			}
 
-			item.setAttribute(k, value);
+			item.setAttribute(attrType, value);
 		}
 		List<CLinkDescription> links = param.getOutgoingLink();
 		for (CLinkDescription ld : links) {
@@ -668,10 +654,10 @@ public class DefaultOperationFactory implements IOperationFactory {
 		return param.getValue();
 	}
 
-	private void addAttribute(ObjectFactory factory, COperationParamItemDescription param, String k, Object v)
+	private void addAttribute(ObjectFactory factory, COperationParamItemDescription param, IAttributeType<?> k, Object v)
 			throws CadseException {
 		CValuesType cvt = factory.createCValuesType();
-		cvt.setKey(k);
+		cvt.setKey(k.getId().toString());
 		if (setAttributValue(factory, v, cvt)) {
 			param.getAttributesValue().add(cvt);
 		}
@@ -750,7 +736,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 	private Link getLinkRefParam(COperation ret, String name) throws TestException {
 		COperationParamLinkRef param = getParam(ret, name, COperationParamLinkRef.class);
 
-		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(new UUID(param.getTypeRef()));
+		ItemType it = workspaceCU.getLogicalWorkspace().getItemType(UUID.fromString(param.getTypeRef()));
 		if (it == null) {
 			throw new TestException("Cannot found type " + param.getTypeRef());
 		}
