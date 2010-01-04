@@ -6,47 +6,46 @@
     <artifactId>si.defaultoperationfactory</artifactId>
     <version>2.3.0-SNAPSHOT</version>
     <name>fr.imag.adele.cadse.si.defaultoperationfactory</name>
-    <build>
+    <parent>
+		<artifactId>fr.imag.adele.cadse.parent.ipojo</artifactId>
+		<groupId>fr.imag.adele.cadse</groupId>
+		<version>2.3.0-SNAPSHOT</version>
+		<relativePath>../fr.imag.adele.cadse.parent.ipojo</relativePath>
+	</parent>
+	<build>
         <plugins>
             <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.apache.felix</groupId>
+                <artifactId>maven-bundle-plugin</artifactId>
+                <extensions>true</extensions>
                 <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
+                    <instructions>
+                        <Export-Package>fr.imag.adele.fede.workspace.si.defaultoperationfactory*;version="${version.cadse}"</Export-Package>
+                    </instructions>
                 </configuration>
-            </plugin>
+            </plugin>            
         </plugins>
     </build>
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>as.cu</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>cu.core</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>as.operationfactory</artifactId>
-            <version>${project.version}</version>
         </dependency>
         <dependency>
-        	<groupId>fr.imag.adele.cadse</groupId>
+        	<groupId>${project.groupId}</groupId>
         	<artifactId>as.initmodel</artifactId>
-        	<version>${project.version}</version>
         </dependency>
         <dependency>
-        	<groupId>fr.imag.adele.cadse</groupId>
-        	<artifactId>cu.core</artifactId>
-        	<version>${project.version}</version>
-        </dependency>
-        <dependency>
-        	<groupId>fr.imag.adele.cadse</groupId>
+        	<groupId>${project.groupId}</groupId>
         	<artifactId>as.test</artifactId>
-        	<version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

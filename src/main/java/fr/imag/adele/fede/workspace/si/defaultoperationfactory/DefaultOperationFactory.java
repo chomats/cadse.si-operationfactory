@@ -106,12 +106,12 @@ public class DefaultOperationFactory implements IOperationFactory {
 		if (oper instanceof WSOCommitItem) {
 			return true;
 		}
-		if (oper instanceof WSODeleteItemAndContent) {
-			return true;
-		}
-		if (oper instanceof WSCheckItemInViewer) {
-			return true;
-		}
+//		if (oper instanceof WSODeleteItemAndContent) {
+//			return true;
+//		}
+//		if (oper instanceof WSCheckItemInViewer) {
+//			return true;
+//		}
 		if (oper instanceof WSCheckItem) {
 			return true;
 		}
@@ -248,22 +248,22 @@ public class DefaultOperationFactory implements IOperationFactory {
 			return new WSODeleteLink(l);
 		}
 
-		if (subType.equals("WSODeleteItemAndContent")) {
-			return new WSODeleteItemAndContent(getItemRefFromParam("item", coper), getBooleanParam("delete-content",
-					coper), getStringParam("error-msg", coper), getBooleanParam("delete-eclipse-resource", coper));
-		}
-		if (subType.equals("WSCheckItemInViewer")) {
-			return new WSCheckItemInViewer(getStringParam("view-id", coper), getStringParam("view-second-id", coper),
-					getStringParam("node-id", coper));
-		}
+//		if (subType.equals("WSODeleteItemAndContent")) {
+//			return new WSODeleteItemAndContent(getItemRefFromParam("item", coper), getBooleanParam("delete-content",
+//					coper), getStringParam("error-msg", coper), getBooleanParam("delete-eclipse-resource", coper));
+//		}
+//		if (subType.equals("WSCheckItemInViewer")) {
+//			return new WSCheckItemInViewer(getStringParam("view-id", coper), getStringParam("view-second-id", coper),
+//					getStringParam("node-id", coper));
+//		}
 
 		if (subType.equals("WSCheckItem")) {
 			return new WSCheckItem(workspaceCU.getLogicalWorkspace(), getStringParam("item-id", coper));
 		}
-		if (subType.equals("WSCheckAttribute")) {
-			CValuesType value = getAttributeValue("value", coper);
-			return new WSCheckAttribute(getItemRefFromParam("item", coper), value.getKey(), createValue(value));
-		}
+//		if (subType.equals("WSCheckAttribute")) {
+//			CValuesType value = getAttributeValue("value", coper);
+//			return new WSCheckAttribute(getItemRefFromParam("item", coper), value.getKey(), createValue(value));
+//		}
 		if (subType.equals("WSCheckContent")) {
 			return new WSCheckContent(getItemRefFromParam("item", coper), getStringParam("qualified-class-name", coper));
 		}
@@ -458,29 +458,29 @@ public class DefaultOperationFactory implements IOperationFactory {
 			ret.setShoulBeStopIfError(true);
 			return ret;
 		}
-		if (oper instanceof WSODeleteItemAndContent) {
-			COperation ret = factory.createCOperation();
-			ret.setType(getName() + ":WSODeleteItemAndContent");
-			WSODeleteItemAndContent goodoper = ((WSODeleteItemAndContent) oper);
-			createItemRefParam(factory, ret, "item", goodoper.getItem());
-			createStringParam(factory, ret, "error-msg", goodoper.getErrorMsg());
-			createBooleanParam(factory, ret, "delete-content", goodoper.isDeleteContent());
-			createBooleanParam(factory, ret, "delete-eclipse-resource", goodoper.isDeleteEclipseResource());
-			ret.setComment(oper.getDiplayComment());
-			ret.setShoulBeStopIfError(true);
-			return ret;
-		}
-		if (oper instanceof WSCheckItemInViewer) {
-			COperation ret = factory.createCOperation();
-			ret.setType(getName() + ":WSCheckItemInViewer");
-			WSCheckItemInViewer goodoper = ((WSCheckItemInViewer) oper);
-			createStringParam(factory, ret, "view-id", goodoper.getViewId());
-			createStringParam(factory, ret, "view-second-id", goodoper.getViewSecondId());
-			createStringParam(factory, ret, "node-id", goodoper.getNodeIdentifier());
-			ret.setComment(oper.getDiplayComment());
-			ret.setShoulBeStopIfError(false);
-			return ret;
-		}
+//		if (oper instanceof WSODeleteItemAndContent) {
+//			COperation ret = factory.createCOperation();
+//			ret.setType(getName() + ":WSODeleteItemAndContent");
+//			WSODeleteItemAndContent goodoper = ((WSODeleteItemAndContent) oper);
+//			createItemRefParam(factory, ret, "item", goodoper.getItem());
+//			createStringParam(factory, ret, "error-msg", goodoper.getErrorMsg());
+//			createBooleanParam(factory, ret, "delete-content", goodoper.isDeleteContent());
+//			createBooleanParam(factory, ret, "delete-eclipse-resource", goodoper.isDeleteEclipseResource());
+//			ret.setComment(oper.getDiplayComment());
+//			ret.setShoulBeStopIfError(true);
+//			return ret;
+//		}
+//		if (oper instanceof WSCheckItemInViewer) {
+//			COperation ret = factory.createCOperation();
+//			ret.setType(getName() + ":WSCheckItemInViewer");
+//			WSCheckItemInViewer goodoper = ((WSCheckItemInViewer) oper);
+//			createStringParam(factory, ret, "view-id", goodoper.getViewId());
+//			createStringParam(factory, ret, "view-second-id", goodoper.getViewSecondId());
+//			createStringParam(factory, ret, "node-id", goodoper.getNodeIdentifier());
+//			ret.setComment(oper.getDiplayComment());
+//			ret.setShoulBeStopIfError(false);
+//			return ret;
+//		}
 		if (oper instanceof WSCheckItem) {
 			COperation ret = factory.createCOperation();
 			ret.setType(getName() + ":WSCheckItem");
@@ -491,14 +491,14 @@ public class DefaultOperationFactory implements IOperationFactory {
 			return ret;
 		}
 		if (oper instanceof WSCheckAttribute) {
-			COperation ret = factory.createCOperation();
-			ret.setType(getName() + ":WSCheckAttribute");
-			WSCheckAttribute goodoper = ((WSCheckAttribute) oper);
-			createItemRefParam(factory, ret, "item", goodoper.getItem());
-			createAttributeValue(factory, ret, "value", goodoper.getKey(), goodoper.getValue());
-			ret.setComment(oper.getDiplayComment());
-			ret.setShoulBeStopIfError(false);
-			return ret;
+//			COperation ret = factory.createCOperation();
+//			ret.setType(getName() + ":WSCheckAttribute");
+//			WSCheckAttribute goodoper = ((WSCheckAttribute) oper);
+//			createItemRefParam(factory, ret, "item", goodoper.getItem());
+//			createAttributeValue(factory, ret, "value", goodoper.getKey(), goodoper.getValue());
+//			ret.setComment(oper.getDiplayComment());
+//			ret.setShoulBeStopIfError(false);
+//			return ret;
 		}
 		if (oper instanceof WSCheckContent) {
 			COperation ret = factory.createCOperation();
@@ -531,15 +531,15 @@ public class DefaultOperationFactory implements IOperationFactory {
 			return ret;
 		}
 		if (oper instanceof WSOSetAttribute) {
-			COperation ret = factory.createCOperation();
-			WSOSetAttribute goodoper = ((WSOSetAttribute) oper);
-			ret.setType(getName() + ":WSOSetAttribute");
-			createItemRefParam(factory, ret, "item", goodoper.getItem());
-			createStringParam(factory, ret, "key", goodoper.getKey());
-			createAttributeValue(factory, ret, "value", goodoper.getKey(), goodoper.getValue());
-			ret.setComment(oper.getDiplayComment());
-			ret.setShoulBeStopIfError(true);
-			return ret;
+//			COperation ret = factory.createCOperation();
+//			WSOSetAttribute goodoper = ((WSOSetAttribute) oper);
+//			ret.setType(getName() + ":WSOSetAttribute");
+//			createItemRefParam(factory, ret, "item", goodoper.getItem());
+//			createStringParam(factory, ret, "key", goodoper.getKey());
+//			createAttributeValue(factory, ret, "value", goodoper.getKey(), goodoper.getValue());
+//			ret.setComment(oper.getDiplayComment());
+//			ret.setShoulBeStopIfError(true);
+//			return ret;
 		}
 		return null;
 	}
