@@ -69,7 +69,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see fr.imag.adele.fede.workspace.as.operationfactory.IOperationFactory#equals(fede.workspace.tool.loadmodel.model.jaxb.COperationEx,
+	 * @see fr.imag.adele.fede.workspace.as.operationfactory.IOperationFactory#equals(fr.imag.adele.fede.workspace.as.initmodel.jaxb.COperationEx,
 	 *      java.lang.Throwable)
 	 */
 	public boolean equals(COperationEx coper, Throwable ex) {
@@ -146,7 +146,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see fr.imag.adele.fede.workspace.as.operationfactory.IOperationFactory#read(fede.workspace.tool.loadmodel.model.jaxb.COperation)
+	 * @see fr.imag.adele.fede.workspace.as.operationfactory.IOperationFactory#read(fr.imag.adele.fede.workspace.as.initmodel.jaxb.COperation)
 	 */
 	public WSOperation read(COperation coper) throws Throwable {
 		String type = coper.getType();
@@ -372,7 +372,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 	 * (non-Javadoc)
 	 * 
 	 * @see fr.imag.adele.fede.workspace.as.operationfactory.IOperationFactory#write(fr.imag.adele.cadse.core.oper.WSOperation,
-	 *      fede.workspace.tool.loadmodel.model.jaxb.ObjectFactory)
+	 *      fr.imag.adele.fede.workspace.as.initmodel.jaxb.ObjectFactory)
 	 */
 	public COperation write(WSOperation oper, ObjectFactory factory) throws CadseException {
 		Class<?> type = oper.getClass();
@@ -803,7 +803,7 @@ public class DefaultOperationFactory implements IOperationFactory {
 	 * (non-Javadoc)
 	 * 
 	 * @see fr.imag.adele.fede.workspace.as.operationfactory.IOperationFactory#write(java.lang.Throwable,
-	 *      fede.workspace.tool.loadmodel.model.jaxb.ObjectFactory)
+	 *      fr.imag.adele.fede.workspace.as.initmodel.jaxb.ObjectFactory)
 	 */
 	public COperationEx write(Throwable ex, ObjectFactory factory) {
 		COperationEx cex = factory.createCOperationEx();
