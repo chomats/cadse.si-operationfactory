@@ -45,7 +45,6 @@ import fr.imag.adele.cadse.core.oper.WSCheckMapping;
 import fr.imag.adele.cadse.core.oper.WSOCommitItem;
 import fr.imag.adele.cadse.core.oper.WSOCreateLink;
 import fr.imag.adele.cadse.core.oper.WSODeleteLink;
-import fr.imag.adele.cadse.core.oper.WSOGenerateContent;
 import fr.imag.adele.cadse.core.oper.WSOSetAttribute;
 import fr.imag.adele.cadse.core.oper.WSOperation;
 import fr.imag.adele.cadse.core.oper.annotation.OperParameter;
@@ -122,9 +121,6 @@ public class DefaultOperationFactory implements IOperationFactory {
 			return true;
 		}
 		if (oper instanceof WSCheckMapping) {
-			return true;
-		}
-		if (oper instanceof WSOGenerateContent) {
 			return true;
 		}
 		if (oper instanceof WSOSetAttribute) {
@@ -521,15 +517,15 @@ public class DefaultOperationFactory implements IOperationFactory {
 			return ret;
 		}
 
-		if (oper instanceof WSOGenerateContent) {
-			COperation ret = factory.createCOperation();
-			WSOGenerateContent goodoper = ((WSOGenerateContent) oper);
-			ret.setType(getName() + ":WSOGenerateContent");
-			createItemRefParam(factory, ret, "item", goodoper.getItem());
-			ret.setComment(oper.getDiplayComment());
-			ret.setShoulBeStopIfError(true);
-			return ret;
-		}
+//		if (oper instanceof WSOGenerateContent) {
+//			COperation ret = factory.createCOperation();
+//			WSOGenerateContent goodoper = ((WSOGenerateContent) oper);
+//			ret.setType(getName() + ":WSOGenerateContent");
+//			createItemRefParam(factory, ret, "item", goodoper.getItem());
+//			ret.setComment(oper.getDiplayComment());
+//			ret.setShoulBeStopIfError(true);
+//			return ret;
+//		}
 		if (oper instanceof WSOSetAttribute) {
 //			COperation ret = factory.createCOperation();
 //			WSOSetAttribute goodoper = ((WSOSetAttribute) oper);
